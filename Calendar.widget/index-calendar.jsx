@@ -103,6 +103,7 @@ export const command = dispatch => {
 	let todaysDate = new Date().getDate(); // todays number calendar day
 	let year = new Date().getFullYear(); // 20XX
 	let month = new Date().getMonth() + 1; // 1 - 12
+	let month_name = months[month - 1]
 	let monthString = month < 10 ? `0${month}` : month; // 01 - 12
 	let FirstOfMonthString = `${year}-${monthString}-01`;
 	let weekdayFirstOfMonth = new Date(FirstOfMonthString).getDay() - 1; //first day of the month
@@ -121,6 +122,7 @@ export const command = dispatch => {
 			year,
 			months,
 			month,
+			month_name,
 			week,
 			todaysDate,
 			daysToSkip,
@@ -145,6 +147,7 @@ export const render = ({
 	year,
 	months,
 	month,
+	month_name,
 	week,
 	todaysDate,
 	daysToSkip,
@@ -157,7 +160,7 @@ export const render = ({
 	) : (
 		<main>
 			<header>
-				<Headline>{`${months[month - 1]} ${year}`}</Headline>
+				<Headline>{`${month_name} ${year}`}</Headline>
 			</header>
 			<Calendar>
 				{week.map(day => (
